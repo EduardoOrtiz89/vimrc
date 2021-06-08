@@ -1,0 +1,48 @@
+{
+  "languageserver": {
+    "intelephense": {
+      "command": "intelephense",
+      "args": ["--stdio"],
+      "filetypes": ["php"],
+      "licenceKey": "000H7RB6TZIJX99",
+      "initializationOptions": {
+        "licenceKey": "000H7RB6TZIJX99",
+         "storagePath": "/tmp/intelephense"
+      }
+
+    },
+    "tsserver": {
+      "npm":"usr/local/bin/npm",
+      "filetypes":["ts", "tsx", "typescript.tsx", "jsx"]
+    },
+    "vetur": {
+      "filetypes": ["vue"],
+      "command":"vls"
+    }
+  },
+
+  "eslint": {
+    "autoFixOnSave": true,
+    "filetypes": ["vue", "javascript",  "javascriptreact", "typescriptreact" ,"typescript" ,"ts", "typescript.ts", "tsx", "typescript.tsx", "jsx"]
+  },
+  "tailwindCSS.emmetCompletions": true, 
+"yank.enableCompletion": false,
+
+"tailwindCSS.cssLanguages": [ "css", "less", "postcss", "sass", "scss", "stylus", "vue" ],
+  "emmet.includeLanguages": {"vue-html": "html", "javascript": "javascriptreact"},
+  "suggest.enablePreview":true,
+  "suggest.floatEnable":true,
+  "typescript.suggest.completeFunctionCalls": true,
+  "javascript.suggest.completeFunctionCalls": true,
+  "snippets.userSnippetsDirectory": "/home/eduardo/.config/nvim/ultisnips",
+  "suggest.snippetIndicator": " ",
+  "diagnostic.enable": false,
+  "diagnostic.displayByAle": true,
+  "diagnostic.signOffset": 9999999,
+  "diagnostic.errorSign": "",
+  "coc.preferences.formatOnSaveFiletypes": ["php"],
+  "coc.preferences.hoverTarget": "float",
+  "html.format.enable": true,
+  "flutter.openDevLogSplitCommand": "botright 10split"
+
+}

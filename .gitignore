@@ -1,0 +1,12 @@
+plugged/
+plugged/
+pluggedconf/
+vimrc
+UltiSnips
+ultisnips
+settings
+sessions
+autoload
+coc-settings.json
+plugin
+init3.vim
