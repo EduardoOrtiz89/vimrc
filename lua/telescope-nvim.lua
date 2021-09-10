@@ -1,4 +1,13 @@
 require("telescope").setup {
+   extensions = {
+      fzf = {
+        fuzzy = true,                    -- false will only do exact matching
+        override_generic_sorter = false, -- override the generic sorter
+        override_file_sorter = true,     -- override the file sorter
+        case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+                                         -- the default case_mode is "smart_case"
+      }
+    },
     defaults = {
         vimgrep_arguments = {
             "rg",
@@ -20,7 +29,6 @@ require("telescope").setup {
             -- '--glob "!.git/*"',
             -- '--color "always"',
         },
-        prompt_position = "bottom",
         prompt_prefix = "  ",
         selection_caret = " ",
         entry_prefix = "  ",
@@ -28,7 +36,10 @@ require("telescope").setup {
         selection_strategy = "reset",
         sorting_strategy = "descending",
         layout_strategy = "horizontal",
-        layout_defaults = {
+        layout_config = {
+            width = 0.75,
+            prompt_position = "bottom",
+            preview_cutoff = 120,
             horizontal = {
                 mirror = false,
                 preview_width = 0.5
@@ -42,10 +53,6 @@ require("telescope").setup {
         generic_sorter = require "telescope.sorters".get_generic_fuzzy_sorter,
         shorten_path = true,
         winblend = 0,
-        width = 0.75,
-        preview_cutoff = 120,
-        results_height = 1,
-        results_width = 0.8,
         border = {},
         borderchars = {"─", "│", "─", "│", "╭", "╮", "╯", "╰"},
         color_devicons = true,
@@ -66,6 +73,7 @@ require("telescope").setup {
 }
 
 require("telescope").load_extension("media_files")
+require("telescope").load_extension("fzf")
 
 local opt = {noremap = true, silent = true}
 

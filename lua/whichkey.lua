@@ -61,7 +61,11 @@ wk.register({
   },
   ["<leader>g"] = {
     name = "Git",
-    s = { "<cmd>G<cr>", "Git Status" },
+    s = { "<cmd>Git<cr>", "Git status" },
+    f = { "<cmd>DiffviewOpen<cr>", "Git Diff" },
+    c = { "<cmd>DiffviewClose<cr>", "Git Diff Close"},
+    d = { "<cmd>diffget //2<cr>", "Accept Left"},
+    n = { "<cmd>diffget //3<cr>", "Accept Right"},
   },
   ["<leader>x"] = { "<cmd>bdelete<cr>", "Delete Buffer" },
 })

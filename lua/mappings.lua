@@ -32,7 +32,7 @@ map("n", "<leader>n", [[ <Cmd> set nu!<CR>]], opt)
 map("n", "<leader>z", [[ <Cmd> TZAtaraxis<CR>]], opt)
 map("n", "<leader>m", [[ <Cmd> TZMinimalist<CR>]], opt)
 
-map("n", "<C-s>", [[ <Cmd> w <CR>]], opt) -- save
+-- map("n", "<C-s>", [[ <Cmd> w <CR>]], opt) -- save
 
 
 

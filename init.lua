@@ -5,6 +5,7 @@ require "file-icons"
 require "misc-utils"
 require "top-bufferline"
 require "statusline"
+-- require "snap-config"
 
 require("colorizer").setup()
 require("neoscroll").setup() -- smooth scroll
@@ -13,6 +14,7 @@ require("neoscroll").setup() -- smooth scroll
 require "nvim-lspconfig"
 require "compe-completion"
 require "lsp-utils"
+require "diffview-config"
 
 local cmd = vim.cmd
 local g = vim.g
@@ -36,6 +38,11 @@ require("lsp-colors").setup({
   Information = "#0db9d7",
   Hint = "#10B981"
 })
+
+local neogit = require('neogit')
+
+neogit.setup {}
+
 
 local indent = 2
 
@@ -68,6 +75,7 @@ vim.api.nvim_exec([[
 -- require "zenmode"
 
 vim.cmd[[let g:sonokai_style = 'andromeda']]
+vim.cmd[[let g:sonokai_style = 'atlantis']]
 vim.cmd[[let g:sonokai_enable_italic = 1]]
 vim.cmd[[colorscheme sonokai]]
 -- vim.cmd([["let g:polyglot_disabled = ['autoindent']"]])
@@ -78,6 +86,7 @@ vim.cmd[[colorscheme sonokai]]
  vim.api.nvim_exec([[set smarttab]], false)
  vim.api.nvim_exec([[
  set relativenumber
+let g:indent_blankline_use_treesitter = v:true
 filetype plugin indent on
 autocmd BufRead,BufNewFile *.php setlocal tabstop=4 shiftwidth=4 softtabstop=4
 autocmd BufRead,BufNewFile *.vue setlocal tabstop=2 shiftwidth=2 softtabstop=2

@@ -21,11 +21,12 @@ require "compe".setup {
         vsnip = {kind = "﬌"}, --replace to what sign you prefer
         nvim_lsp = true,
         nvim_lua = true,
-        spell = true,
+        spell = false,
         tags = true,
         vsip = true,
-        ultisnips = true,
+        ultisnips = {kind = "﬌"}, --replace to what sign you prefer
         snippets_nvim = true,
+        -- tabnine = true
         -- treesitter = true
     }
 }

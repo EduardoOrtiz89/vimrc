@@ -1,4 +1,6 @@
 function on_attach(client)
+
+    require'lsp_signature'.on_attach()
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
@@ -90,6 +92,20 @@ require'lspconfig'.tsserver.setup{
 }
 require'lspconfig'.cssls.setup{
   on_attach = on_attach
+}
+
+
+require'lspconfig'.tailwindcss.setup{
+	cmd = {
+		"tailwindcss-language-server",
+		"--stdio"
+	},
+	filetypes = {
+		"blade",
+		"django-html",
+		"html",
+		"vue",
+	}
 }
 
 

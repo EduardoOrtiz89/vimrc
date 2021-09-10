@@ -81,6 +81,18 @@ return require("packer").startup(
         -- use 'folke/tokyonight.nvim'
         -- use 'glepnir/zephyr-nvim'
         use 'sainnhe/sonokai'
+        use 'sainnhe/gruvbox-material'
+        use 'godlygeek/tabular'
+        use 'plasticboy/vim-markdown'
+        use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+        use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+        use { 'camspiers/snap', rocks = {'fzy'}}
+        use 'sindrets/diffview.nvim'
+        use 'leafOfTree/vim-vue-plugin'
+        use 'jwalton512/vim-blade'
+        use 'dracula/vim'
+        use 'ray-x/lsp_signature.nvim'
+
         -- use 'noahfrederick/vim-laravel'
 
 
@@ -89,7 +101,8 @@ return require("packer").startup(
         -- discord rich presence
         --use "andweeb/presence.nvim"
 
-        use {"lukas-reineke/indent-blankline.nvim", branch = "lua"}
+        use {"lukas-reineke/indent-blankline.nvim", branch = "master"}
+        -- use {'tzachar/compe-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-compe'}
     end,
     {
         display = {
