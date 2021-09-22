@@ -1,6 +1,5 @@
 function on_attach(client)
-
-    require'lsp_signature'.on_attach()
+   require'lsp_signature'.on_attach()
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
@@ -13,17 +12,17 @@ function on_attach(client)
     -- Mappings.
     local opts = {noremap = true, silent = true}
 
-    buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-    buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
+    -- buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+    -- buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
     buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
-    buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+    -- buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
     buf_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
     buf_set_keymap("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
     buf_set_keymap("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
     buf_set_keymap("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
     buf_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
     buf_set_keymap("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-    buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+    -- buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
     buf_set_keymap("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
     buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
     buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
@@ -51,7 +50,7 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 }
 
 -- these langs require same lspconfig so put em all in a table and loop through!
-local servers = {"html", "bashls"}
+local servers = {"html"}
 
 for _, lang in ipairs(servers) do
     lspconf[lang].setup {
@@ -60,31 +59,14 @@ for _, lang in ipairs(servers) do
     }
 end
 
-require'lspconfig'.phpactor.setup{
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
-require'lspconfig'.vuels.setup{
-  on_attach=on_attach,
-  capabilities = capabilities,
-  init_options = {
-    config = {
-      vetur = {
-        completion = {
-          autoImport = true
-        },
-        format = {
-          defaultFormatter = {
-            js = "prettier-eslint"
-          }
-        }
-      }
-    }
-  }
-}
+-- require'lspconfig'.phpactor.setup{
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+-- }
 require'lspconfig'.intelephense.setup{
   on_attach=on_attach,
-  capabilities = capabilities,
+  licenseKey='000H7RB6TZIJX99'
+  -- capabilities = capabilities,
 }
 require'lspconfig'.tsserver.setup{
   on_attach = on_attach,
@@ -119,37 +101,37 @@ require'lspconfig'.tailwindcss.setup{
 --}
 
 -- lua lsp settings
-USER = "/home/" .. vim.fn.expand("$USER")
+-- USER = "/home/" .. vim.fn.expand("$USER")
 
-local sumneko_root_path = USER .. "/.config/lua-language-server"
-local sumneko_binary = USER .. "/.config/lua-language-server/bin/Linux/lua-language-server"
+-- local sumneko_root_path = USER .. "/.config/lua-language-server"
+-- local sumneko_binary = USER .. "/.config/lua-language-server/bin/Linux/lua-language-server"
 
-lspconf.sumneko_lua.setup {
-    cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
-    root_dir = function()
-        return vim.loop.cwd()
-    end,
-    settings = {
-        Lua = {
-            runtime = {
-                version = "LuaJIT",
-                path = vim.split(package.path, ";")
-            },
-            diagnostics = {
-                globals = {"vim"}
-            },
-            workspace = {
-                library = {
-                    [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                    [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
-                }
-            },
-            telemetry = {
-                enable = false
-            }
-        }
-    }
-}
+-- lspconf.sumneko_lua.setup {
+--     cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
+--     root_dir = function()
+--         return vim.loop.cwd()
+--     end,
+--     settings = {
+--         Lua = {
+--             runtime = {
+--                 version = "LuaJIT",
+--                 path = vim.split(package.path, ";")
+--             },
+--             diagnostics = {
+--                 globals = {"vim"}
+--             },
+--             workspace = {
+--                 library = {
+--                     [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+--                     [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
+--                 }
+--             },
+--             telemetry = {
+--                 enable = false
+--             }
+--         }
+--     }
+-- }
 
 -- replace the default lsp diagnostic letters with prettier symbols
 vim.fn.sign_define("LspDiagnosticsSignError", {text = "", numhl = "LspDiagnosticsDefaultError"})
