@@ -2,22 +2,56 @@ local g = vim.g
 
 vim.o.termguicolors = true
 
-g.nvim_tree_side = "left"
-g.nvim_tree_width = 26
-g.nvim_tree_ignore = {".git", "node_modules", ".cache"}
--- g.nvim_tree_auto_open = 0
--- g.nvim_tree_auto_close = 0
--- g.nvim_tree_quit_on_open = 0
-g.nvim_tree_follow = 1
-g.nvim_tree_indent_markers = 0
-g.nvim_tree_hide_dotfiles = 1
--- g.nvim_tree_git_hl = 1
--- g.nvim_tree_root_folder_modifier = ":t"
--- g.nvim_tree_tab_open = 0
--- g.nvim_tree_allow_resize = 1
-g.nvim_tree_lsp_diagnostics = 1
--- g.nvim_tree_allow_resize = 1
--- g.nvim_tree_hide_dotfiles = 0
+    require'nvim-tree'.setup {
+      disable_netrw       = true,
+      hijack_netrw        = true,
+      open_on_setup       = false,
+      ignore_ft_on_setup  = {},
+      follow = true,
+      update_to_buf_dir   = {
+        enable = true,
+        auto_open = true,
+      },
+      auto_close          = true,
+      open_on_tab         = false,
+      hijack_cursor       = false,
+      update_cwd          = false,
+      diagnostics         = {
+        enable = true,
+        icons = {
+          hint = "",
+          info = "",
+          warning = "",
+          error = "",
+        }
+      },
+      update_focused_file = {
+        enable      = true,
+        update_cwd  = false,
+        ignore_list = {}
+      },
+      system_open = {
+        cmd  = nil,
+        args = {}
+      },
+      view = {
+        width = 30,
+        height = 30,
+        side = 'left',
+        auto_resize = false,
+        mappings = {
+          custom_only = false,
+          list = {}
+        }
+      },
+      filters = {
+	dotfiles = false,
+	custom = {}
+      }
+    }
+
+
+
 
 g.nvim_tree_show_icons = {
     git = 1,

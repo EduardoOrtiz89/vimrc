@@ -55,6 +55,7 @@ return require("packer").startup(
         use 'AndrewRadev/splitjoin.vim'
         use 'thalesmello/vim-textobj-multiline-str'
         use 'machakann/vim-highlightedyank'
+        use 'ggandor/lightspeed.nvim'
         use 'mhinz/vim-signify'
         -- use 'mrdotb/vim-tailwindcss'
         use 'phpactor/phpactor'
@@ -82,6 +83,7 @@ return require("packer").startup(
         -- use 'glepnir/zephyr-nvim'
         use 'sainnhe/sonokai'
         use 'sainnhe/gruvbox-material'
+        use 'sainnhe/edge'
         use 'godlygeek/tabular'
         use 'plasticboy/vim-markdown'
         use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
@@ -92,7 +94,11 @@ return require("packer").startup(
         use 'jwalton512/vim-blade'
         use 'dracula/vim'
         use 'ray-x/lsp_signature.nvim'
-
+        use "projekt0n/github-nvim-theme"
+        use 'olimorris/onedarkpro.nvim'
+        use 'rafamadriz/neon'
+        use 'folke/tokyonight.nvim'
+        use 'nvim-lualine/lualine.nvim'
         -- use 'noahfrederick/vim-laravel'
 
 

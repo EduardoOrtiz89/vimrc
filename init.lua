@@ -74,12 +74,28 @@ vim.api.nvim_exec([[
 -- setup for TrueZen.nvim
 -- require "zenmode"
 
-vim.cmd[[let g:sonokai_style = 'andromeda']]
-vim.cmd[[let g:sonokai_style = 'atlantis']]
-vim.cmd[[let g:sonokai_enable_italic = 1]]
-vim.cmd[[colorscheme sonokai]]
+-- vim.cmd[[let g:sonokai_style = 'andromeda']]
+-- vim.cmd[[let g:sonokai_enable_italic = 1]]
+--
+-- vim.g.neon_style = "light"
+-- vim.g.neon_italic_keyword = true
+-- vim.g.neon_italic_function = true
+-- vim.g.neon_transparent = false
+vim.g.tokyonight_style = "night";
+vim.cmd[[colorscheme tokyonight]]
+
+-- require('lualine').setup {
+--   options = {
+--     -- ... your lualine config
+--     theme = 'neon'
+--     -- ... your lualine config
+--   }
+-- }
+
+
+
+
 -- vim.cmd([["let g:polyglot_disabled = ['autoindent']"]])
--- vim.g.tokyonight_style = "Storm";
 
  vim.api.nvim_exec([[set smartindent]], false)
  vim.api.nvim_exec([[set autoindent]], false)

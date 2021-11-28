@@ -76,6 +76,9 @@ require'lspconfig'.cssls.setup{
   on_attach = on_attach
 }
 
+require'lspconfig'.vuels.setup{
+  on_attach = on_attach
+}
 
 require'lspconfig'.tailwindcss.setup{
 	cmd = {
