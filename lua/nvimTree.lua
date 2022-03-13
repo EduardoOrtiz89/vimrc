@@ -12,8 +12,8 @@ vim.o.termguicolors = true
         enable = true,
         auto_open = true,
       },
-      auto_close          = true,
-      open_on_tab         = false,
+      auto_close          = false,
+      open_on_tab         = true,
       hijack_cursor       = false,
       update_cwd          = false,
       diagnostics         = {

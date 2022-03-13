@@ -20,7 +20,7 @@ require "bufferline".setup {
         show_buffer_close_icons = true,
         separator_style =  "thick",
         -- mappings = "true",
-        diagnostics = 'nvim_lsp',
+        diagnostics = 'nvim_diagnostic',
         diagnostics_indicator = function(count, level, diagnostics_dict, context)
             local icon = level:match("error") and " " or " "
             return " " .. icon .. count
