@@ -28,10 +28,10 @@ require "bufferline".setup {
         custom_areas = {
             right = function()
                 local result = {}
-                local error = vim.lsp.diagnostic.get_count(0, [[Error]])
-                local warning = vim.lsp.diagnostic.get_count(0, [[Warning]])
-                local info = vim.lsp.diagnostic.get_count(0, [[Information]])
-                local hint = vim.lsp.diagnostic.get_count(0, [[Hint]])
+                local error = vim.diagnostic.get(0, [[Error]])
+                local warning = vim.diagnostic.get(0, [[Warning]])
+                local info = vim.diagnostic.get(0, [[Information]])
+                local hint = vim.diagnostic.get(0, [[Hint]])
 
                 if error ~= 0 then
                     result[1] = {text = "  " .. error, guifg = "#EC5241"}
@@ -114,14 +114,12 @@ require "bufferline".setup {
     -- }
 }
 
-local opt = {silent = true}
-local map = vim.api.nvim_set_keymap
-vim.g.mapleader = " "
+-- local opt = {silent = true}
+-- local map = vim.api.nvim_set_keymap
 
 -- MAPPINGS
-map("n", "<S-t>", [[<Cmd>tabnew<CR>]], opt) -- new tab
-map("n", "<S-x>", [[<Cmd>bdelete<CR>]], opt) -- close tab
 
 -- move between tabs
-map("n", "<TAB>", [[<Cmd>BufferLineCycleNext<CR>]], opt)
-map("n", "<S-TAB>", [[<Cmd>BufferLineCyclePrev<CR>]], opt)
+-- map("n", "<TAB>", [[<Cmd>BufferLineCycleNext<CR>]], opt)
+-- map("n", "<S-TAB>", [[<Cmd>BufferLineCyclePrev<CR>]], opt)
+

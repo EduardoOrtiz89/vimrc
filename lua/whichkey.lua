@@ -67,5 +67,5 @@ wk.register({
     d = { "<cmd>diffget //2<cr>", "Accept Left"},
     n = { "<cmd>diffget //3<cr>", "Accept Right"},
   },
-  ["<leader>x"] = { "<cmd>bdelete<cr>", "Delete Buffer" },
+  ["<leader>x"] = { "<cmd>bp<bar>sp<bar>bn<bar>bd<cr>", "Delete Buffer" },
 })

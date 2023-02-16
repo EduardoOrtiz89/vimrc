@@ -18,9 +18,9 @@ map("v", "x", [=[ "_x ]=], opt)
  this line too ]]
 
 -- OPEN TERMINALS --
-map("n", "<C-l>", [[<Cmd>vnew term://zsh <CR>]], opt) -- over right
-map("n", "<C-x>", [[<Cmd> split term://zsh | resize 10 <CR>]], opt) --  bottom
-map("n", "<C-t>t", [[<Cmd> tabnew | term <CR>]], opt) -- newtab
+-- map("n", "<C-l>", [[<Cmd>vnew term://zsh <CR>]], opt) -- over right
+-- map("n", "<C-x>", [[<Cmd> split term://zsh | resize 10 <CR>]], opt) --  bottom
+-- map("n", "<C-t>t", [[<Cmd> tabnew | term <CR>]], opt) -- newtab
 
 -- COPY EVERYTHING in the file--
 map("n", "<C-a>", [[ <Cmd> %y+<CR>]], opt)
@@ -31,6 +31,10 @@ map("n", "<leader>n", [[ <Cmd> set nu!<CR>]], opt)
 -- toggle truezen.nvim's ataraxis and minimalist mode
 map("n", "<leader>z", [[ <Cmd> TZAtaraxis<CR>]], opt)
 map("n", "<leader>m", [[ <Cmd> TZMinimalist<CR>]], opt)
+map("", "<leader><left>", "<C-w>h", opt)
+map("", "<leader><right>", "<C-w>l", opt)
+map("n", "<C-w><left>", "<C-w><", opt)
+map("n", "<C-w><right>", "<C-w>>", opt)
 
 -- map("n", "<C-s>", [[ <Cmd> w <CR>]], opt) -- save
 

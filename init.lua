@@ -1,4 +1,5 @@
 -- load all plugins
+require "lazyload"
 require "pluginList"
 require "file-icons"
 
@@ -11,15 +12,11 @@ require("colorizer").setup()
 require("neoscroll").setup() -- smooth scroll
 
 -- lsp stuff
-require "nvim-lspconfig"
-require "compe-completion"
-require "lsp-utils"
 require "diffview-config"
 
 local cmd = vim.cmd
 local g = vim.g
 
-g.mapleader = " "
 g.auto_save = 0
 
 -- colorscheme related stuff
@@ -32,12 +29,12 @@ require "custom_highlights"
 
 -- blankline
 ---- Lua
-require("lsp-colors").setup({
-  Error = "#db4b4b",
-  Warning = "#e0af68",
-  Information = "#0db9d7",
-  Hint = "#10B981"
-})
+-- require("lsp-colors").setup({
+--   Error = "#db4b4b",
+--   Warning = "#e0af68",
+--   Information = "#0db9d7",
+--   Hint = "#10B981"
+-- })
 
 local neogit = require('neogit')
 
@@ -55,47 +52,17 @@ g.indent_blankline_buftype_exclude = {"terminal"}
 g.indent_blankline_show_trailing_blankline_indent = false
 g.indent_blankline_show_first_indent_level = false
 
-require "treesitter-nvim"
 require "mappings"
 
-require "telescope-nvim"
-require "nvimTree"
+-- require "nvimTree"
 
--- git signs , lsp symbols etc
-require "gitsigns-nvim"
 require("nvim-autopairs").setup()
-require("lspkind").init()
 
 -- hide line numbers in terminal windows
 vim.api.nvim_exec([[
    au BufEnter term://* setlocal nonumber
 ]], false)
 
--- setup for TrueZen.nvim
--- require "zenmode"
-
--- vim.cmd[[let g:sonokai_style = 'andromeda']]
--- vim.cmd[[let g:sonokai_enable_italic = 1]]
---
--- vim.g.neon_style = "light"
--- vim.g.neon_italic_keyword = true
--- vim.g.neon_italic_function = true
--- vim.g.neon_transparent = false
-vim.g.tokyonight_style = "night";
-vim.cmd[[colorscheme tokyonight]]
-
--- require('lualine').setup {
---   options = {
---     -- ... your lualine config
---     theme = 'neon'
---     -- ... your lualine config
---   }
--- }
-
-
-
-
--- vim.cmd([["let g:polyglot_disabled = ['autoindent']"]])
 
  vim.api.nvim_exec([[set smartindent]], false)
  vim.api.nvim_exec([[set autoindent]], false)
@@ -118,20 +85,18 @@ autocmd BufRead,BufNewFile * filetype plugin indent on
 source /home/eduardo/.config/nvim/vimrc/general.vim
 vnoremap < <gv
 vnoremap > >gv
+let g:tmux_navigator_no_mappings = 1
+
+"noremap <silent> {Left-Mapping} :<C-U>TmuxNavigateLeft<cr>
+noremap <silent> <leader><down> :<C-U>TmuxNavigateDown<cr>
+noremap <silent> <leader><up> :<C-U>TmuxNavigateUp<cr>
+"noremap <silent> {Right-Mapping} :<C-U>TmuxNavigateRight<cr>
+"noremap <silent> {Previous-Mapping} :<C-U>TmuxNavigatePrevious<cr>
 
 set completefunc=tailwind#complete
 nnoremap <leader>tt :set completefunc=tailwind#complete<cr>
 autocmd CompleteDone * pclose
 
-let g:php_cs_fixer_level = "symfony"                   " options: --level (default:symfony)
-let g:php_cs_fixer_config = "default"                  " options: --config
-let g:php_cs_fixer_rules = "@PSR2"          " options: --rules (default:@PSR2)
-let g:php_cs_fixer_php_path = "php"               " Path to PHP
-let g:php_cs_fixer_enable_default_mapping = 1     " Enable the mapping by default (<leader>pcd)
-let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
-let g:php_cs_fixer_verbose = 0  
-
-"autocmd BufWritePost *.php silent! call PhpCsFixerFixFile()
 
 au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
 
@@ -142,27 +107,24 @@ set autowrite
 set colorcolumn=100
 
 
-
-imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
-smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
-
-imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
-smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
-
-imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
-smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
-imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
-smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
-
-nmap        s   <Plug>(vsnip-select-text)
-xmap        s   <Plug>(vsnip-select-text)
-nmap        S   <Plug>(vsnip-cut-text)
-xmap        S   <Plug>(vsnip-cut-text)
-
  vnoremap H :m '>+1<CR>gv=gv
  vnoremap T :m '<-2<CR>gv=gv
+
+ set path+=~/Develop/aero/views,~/Develop
+ set path+=~/Develop/aero/views/components
+ set includeexpr=substitute(v:fname,'\\.','/','g')
 
 ]], false)
 
 
  require('whichkey')
+
+
+-- auto-reload files when modified externally
+-- https://unix.stackexchange.com/a/383044
+vim.o.autoread = true
+vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
+  command = "if mode() != 'c' | checktime | endif",
+  pattern = { "*" },
+})
+
