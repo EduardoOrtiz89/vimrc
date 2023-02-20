@@ -4,9 +4,11 @@ return {
     require('nightfox').setup({
       options = {
         styles = {
-          comments = "italic",
-          keywords = "bold",
-          types = "italic,bold",
+          -- comments = "italic",
+          types = "italic",
+          keywords = "italic,bold",
+          conditionals = "italic,bold",
+          -- functions = "italic,bold",
         }
       }
     })

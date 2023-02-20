@@ -1,4 +1,11 @@
 {
+  "enc": {
+    "prefix": "Aero Enctyp",
+    "body": [
+      "\\$_ENV['ENCRYPTOR']->encrypt($1)$2"
+    ],
+    "description": "Var Dump exit"
+  },
   "Var Dump": {
     "prefix": "dump",
     "body": [

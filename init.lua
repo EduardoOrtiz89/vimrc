@@ -6,7 +6,6 @@ require "file-icons"
 require "misc-utils"
 require "top-bufferline"
 require "statusline"
--- require "snap-config"
 
 require("colorizer").setup()
 require("neoscroll").setup() -- smooth scroll
@@ -27,15 +26,6 @@ cmd "syntax on"
 
 require "custom_highlights"
 
--- blankline
----- Lua
--- require("lsp-colors").setup({
---   Error = "#db4b4b",
---   Warning = "#e0af68",
---   Information = "#0db9d7",
---   Hint = "#10B981"
--- })
-
 local neogit = require('neogit')
 
 neogit.setup {}
@@ -54,7 +44,6 @@ g.indent_blankline_show_first_indent_level = false
 
 require "mappings"
 
--- require "nvimTree"
 
 require("nvim-autopairs").setup()
 
@@ -62,7 +51,6 @@ require("nvim-autopairs").setup()
 vim.api.nvim_exec([[
    au BufEnter term://* setlocal nonumber
 ]], false)
-
 
  vim.api.nvim_exec([[set smartindent]], false)
  vim.api.nvim_exec([[set autoindent]], false)
@@ -113,6 +101,7 @@ set colorcolumn=100
  set path+=~/Develop/aero/views,~/Develop
  set path+=~/Develop/aero/views/components
  set includeexpr=substitute(v:fname,'\\.','/','g')
+ set relativenumber
 
 ]], false)
 
