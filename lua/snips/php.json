@@ -1,10 +1,10 @@
 {
-  "enc": {
-    "prefix": "Aero Enctyp",
+  "aenc": {
+    "prefix": "aenc",
     "body": [
       "\\$_ENV['ENCRYPTOR']->encrypt($1)$2"
     ],
-    "description": "Var Dump exit"
+    "description": "Aero Encrypt method"
   },
   "Var Dump": {
     "prefix": "dump",
@@ -25,6 +25,8 @@
   "class …": {
     "prefix": "class",
     "body": [
+      "<?php",
+      "",
       "class ${1:ClassName} ${2:extends ${3:AnotherClass}} ${4:implements ${5:Interface}} {",
       "\t$0",
       "}",
@@ -85,7 +87,7 @@
     "description": "Paramater documentation"
   },
   "function …": {
-    "prefix": "fun",
+    "prefix": "pub",
     "body": [
       "${1:public }function ${2:FunctionName}(${3:${4:${5:Type} }\\$${6:var}${7: = ${8:null}}}) {",
       "\t${0:# code...}",

@@ -44,9 +44,7 @@ return {
         'mhinz/vim-signify',
         -- 'mrdotb/vim-tailwindcss',
         -- 'sheerun/vim-polyglot',
-        -- '2072/PHP-Indenting-for-VIm',
         'folke/lsp-colors.nvim',
-        -- 'StanAngeloff/php.vim', tpope /
         'tpope/vim-dadbod',
         'tpope/vim-fugitive',
         'unblevable/quick-scope',
