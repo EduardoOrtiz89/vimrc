@@ -130,13 +130,16 @@ highlight!  CmpItemAbbrMatch  guifg=#82AAFF guibg=NONE
 highlight!  CmpItemAbbrMatchFuzzy  guifg=#82AAFF guibg=NONE 
 highlight!  CmpItemMenu  guifg=#7E8294 guibg=NONE cterm=italic term=italic
 
+highlight CopilotSuggestion guifg=#7E8294 ctermfg=8
 
 
 ]], false)
 
+vim.g.copilot_no_tab_map = true
+vim.g.copilot_assume_mapped = true
+vim.api.nvim_set_keymap('i', '<C-o>', 'copilot#Accept("<CR>")', {expr=true, silent=true})
 
  require('whichkey')
-
 
 -- auto-reload files when modified externally
 -- https://unix.stackexchange.com/a/383044
@@ -145,7 +148,6 @@ vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGai
   command = "if mode() != 'c' | checktime | endif",
   pattern = { "*" },
 })
-
 
 -- highlight! CmpItemKindField  guifg=#EED8DA guibg=#B5585F 
 -- highlight! CmpItemKindProperty  guifg=#EED8DA guibg=#B5585F 

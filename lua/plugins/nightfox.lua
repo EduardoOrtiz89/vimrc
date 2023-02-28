@@ -1,7 +1,13 @@
 return {
   'EdenEast/nightfox.nvim',
-   config = function() 
+  config = function() 
     require('nightfox').setup({
+      palletes = {
+        nightfox = {
+          comment = "#7E8294",
+          red = "#c94f6d",
+        }
+      },
       options = {
         styles = {
           -- comments = "italic",
@@ -12,6 +18,7 @@ return {
         }
       }
     })
-  vim.cmd("colorscheme nightfox")
+    vim.cmd("colorscheme nightfox")
+
   end
 }

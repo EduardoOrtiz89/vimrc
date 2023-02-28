@@ -9,7 +9,9 @@ return {
     -- 'hrsh7th/vim-vsnip',
     "L3MON4D3/LuaSnip",
     "onsails/lspkind.nvim",
-    'saadparwaiz1/cmp_luasnip'
+    'saadparwaiz1/cmp_luasnip',
+    -- 'zbirenbaum/copilot-cmp'
+    -- 'hrsh7th/cmp-copilot',
   },
   config = function() 
     -- Set up nvim-cmp.
@@ -85,6 +87,7 @@ return {
       }),
       sources = cmp.config.sources({
         { name = 'nvim_lsp' },
+        { name = 'copilot' },
         { name = 'path' },
         -- { name = 'vsnip' }, -- For vsnip users.
         { name = 'luasnip' }, -- For luasnip users.
